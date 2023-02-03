@@ -12,10 +12,10 @@ import {
     Put,
     Query,
   } from '@nestjs/common';
-  import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
   //import { Auth } from '@auth/decorators';
-  import { ResponseHttpModel } from '@shared/models';
-  import { ProductsService } from '@uic/services';
+import { ResponseHttpModel } from '@shared/models';
+import { ProductsService } from '@uic/services';
 import { CreateProductDto, FilterProductDto, UpdateProductDto } from '../dto';
 import { ProductEntity } from '../entities/products.model';
 
@@ -74,8 +74,7 @@ import { ProductEntity } from '../entities/products.model';
     @Get(':id')
     @HttpCode(HttpStatus.OK)
     async findOne(
-      @Param('id', ParseUUIDPipe) id: string,
-    ): Promise<ResponseHttpModel> {
+      @Param('id', ParseUUIDPipe) id: string,): Promise<ResponseHttpModel> {
       const serviceResponse = await this.productsService.findOne(id);
   
       return {
